@@ -38,7 +38,11 @@ else if (Build.WORKTYPE == 'public') {
         await _amdi.tagAdmin( amdiMSG )
     }));
 }
-
+else if (Build.WORKTYPE == 'public') {
+    Amdi.operate({pattern: 'tagall$', fromMe: false, desc: Lang.TAGALL_DESC}, (async (amdiMSG) => {
+        await QueenAmdi.amdi_setup()
+        await _amdi.tagAll( amdiMSG )
+        
 Amdi.operate({pattern: 'tagall ?(.*)', fromMe: true,  deleteCommand: false,  desc: Lang.TAGALL_DESC, dontAddCommandList: true}, (async (amdiMSG, input) => {
     await QueenAmdi.amdi_setup()
     const msg = input[1]
